@@ -18,7 +18,7 @@ class Solution:
 
     def get_start_num(self, start: str) -> int:
         if len(start) < 2:
-            return 0
+            return 1
         half_len = len(start) // 2
         if len(start) % 2 == 1:
             return 10 ** half_len
