@@ -5,18 +5,17 @@ class Solution:
 
     def find_solution(self, filename: str) -> int:
         lines = self.parse_input(filename)
-        result = 0
-        row = [ch if ch == "." else "1" for ch in lines[0]]
+        cur = [0 if ch == "." else 1 for ch in lines[0]]
         for line in lines[1:]:
+            prev = cur.copy()
             for i, ch in enumerate(line):
-                if ch == "^" and row[i] == "1":
-                    result += 1
-                    row[i] = "."
+                if ch == "^" and prev[i] > 0:
+                    cur[i] = 0
                     if i - 1 >= 0:
-                        row[i - 1] = "1"
-                    if i + 1 < len(row):
-                        row[i + 1] = "1"
-        return result
+                        cur[i - 1] += prev[i]
+                    if i + 1 < len(cur):
+                        cur[i + 1] += prev[i]
+        return sum(cur)
 
 
 if __name__ == "__main__":
