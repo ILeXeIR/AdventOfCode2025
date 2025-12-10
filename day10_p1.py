@@ -1,5 +1,5 @@
 class Machine:
-    def __init__(self, pattern: set[bool], buttons: list[list[int]]):
+    def __init__(self, pattern: list[bool], buttons: list[list[int]]):
         self.pattern = pattern
         self.buttons = buttons
 
