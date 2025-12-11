@@ -23,9 +23,7 @@ class Solution:
         for step in self.map[node]:
             if step == "out":
                 result += 1
-            elif step in visited:
-                continue
-            else:
+            elif step not in visited:
                 result += self.count_ways(step, way.copy())
         return result
 
